@@ -1,19 +1,16 @@
 export default function AgentMascot({ state }) {
   return (
-    <div className={`mascot-wrapper mascot--${state}`} aria-label={`Sparky is ${state}`}>
+    <div className={`mascot-wrapper mascot--${state}`} aria-label={`Linc is ${state}`}>
       <div className="mascot-body">
 
         {/* Glow ring behind body */}
         <div className="mascot-glow" />
 
-        {/* Antennas */}
-        <div className="mascot-antennas">
-          <div className="antenna antenna-left">
-            <div className="antenna-ball" />
-          </div>
-          <div className="antenna antenna-right">
-            <div className="antenna-ball" />
-          </div>
+        {/* Lincoln top hat */}
+        <div className="mascot-tophat">
+          <div className="tophat-brim" />
+          <div className="tophat-band" />
+          <div className="tophat-crown" />
         </div>
 
         {/* Main face circle */}

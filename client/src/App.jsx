@@ -7,7 +7,7 @@ import './App.css';
 
 const WELCOME = {
   role: 'assistant',
-  content: "Hi there! I'm Sparky! 🌟 Press the big button below and ask me anything — I love to help you learn! You can also load files so I can teach you about any topic!",
+  content: "Hi there, Lincoln Lions! I'm Linc! 🎩 Press the big button below and ask me anything — I love to help you learn! You can also load files so I can teach you about any topic!",
 };
 
 export default function App() {
@@ -135,7 +135,7 @@ export default function App() {
     if (inputText.trim() && agentState === 'idle') sendMessage(inputText);
   }, [inputText, agentState, sendMessage]);
 
-  const DECORATIONS = ['⭐', '🌟', '✨', '💫', '🎈', '🎉', '🌈', '🦋'];
+  const DECORATIONS = ['🦁', '🎩', '⭐', '🔴', '⚪', '🎈', '🏫', '🌟'];
 
   return (
     <div className="app">
@@ -148,8 +148,9 @@ export default function App() {
       <div className="container">
         {/* Header */}
         <header className="header">
-          <h1 className="title">⭐ Sparky the Learning Star! ⭐</h1>
-          <p className="subtitle">Ask me anything — I love to help you learn!</p>
+          <div className="school-badge">🏫 Lincoln Elementary · Wauwatosa, WI</div>
+          <h1 className="title">🎩 Linc the Learning Lion! 🎩</h1>
+          <p className="subtitle">Go Lions! Ask me anything — I love to help you learn!</p>
         </header>
 
         {/* Main area */}
@@ -169,6 +170,8 @@ export default function App() {
                 📚 {loadedFiles.length} file{loadedFiles.length !== 1 ? 's' : ''} loaded!
               </div>
             )}
+
+            <div className="paw-prints" aria-hidden="true">🐾 Go Lions! 🐾</div>
           </div>
 
           {/* Right: Chat */}

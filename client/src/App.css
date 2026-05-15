@@ -4,7 +4,8 @@
 body {
   font-family: 'Nunito', sans-serif;
   min-height: 100vh;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  /* Lincoln red → deep burgundy → navy blue */
+  background: linear-gradient(135deg, #8B0000 0%, #C41E3A 35%, #1a1a3e 100%);
   overflow-x: hidden;
 }
 
@@ -49,11 +50,25 @@ body {
   padding: 20px 0 16px;
 }
 
+.school-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 2px solid rgba(255,255,255,0.35);
+  border-radius: 30px;
+  padding: 5px 18px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  backdrop-filter: blur(6px);
+}
+
 .title {
   font-size: clamp(1.8rem, 5vw, 2.8rem);
   font-weight: 900;
   color: #fff;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.5), 0 0 40px rgba(255, 220, 50, 0.4);
+  text-shadow: 0 2px 12px rgba(0,0,0,0.5), 0 0 40px rgba(255,200,200,0.4);
   letter-spacing: -0.5px;
   line-height: 1.1;
 }
@@ -61,9 +76,17 @@ body {
 .subtitle {
   font-size: 1.1rem;
   font-weight: 700;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255,255,255,0.85);
   margin-top: 8px;
   letter-spacing: 0.3px;
+}
+
+.paw-prints {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 1px;
+  margin-top: 4px;
 }
 
 /* ===== MAIN AREA ===== */
@@ -86,10 +109,11 @@ body {
 .mascot-wrapper {
   position: relative;
   width: 200px;
-  height: 220px;
+  height: 270px;       /* taller to fit top hat */
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
+  padding-bottom: 10px;
 }
 
 /* ------ Mascot body ------ */
@@ -109,55 +133,54 @@ body {
   transition: background 0.5s ease, box-shadow 0.5s ease;
 }
 
-.mascot--idle      .mascot-glow { background: radial-gradient(circle, rgba(79,195,247,0.3) 0%, transparent 70%); }
-.mascot--listening .mascot-glow { background: radial-gradient(circle, rgba(102,187,106,0.4) 0%, transparent 70%); }
-.mascot--thinking  .mascot-glow { background: radial-gradient(circle, rgba(255,167,38,0.4) 0%, transparent 70%); }
-.mascot--speaking  .mascot-glow { background: radial-gradient(circle, rgba(171,71,188,0.4) 0%, transparent 70%); }
+.mascot--idle      .mascot-glow { background: radial-gradient(circle, rgba(220,50,50,0.35) 0%, transparent 70%); }
+.mascot--listening .mascot-glow { background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%); }
+.mascot--thinking  .mascot-glow { background: radial-gradient(circle, rgba(255,200,50,0.45) 0%, transparent 70%); }
+.mascot--speaking  .mascot-glow { background: radial-gradient(circle, rgba(196,30,58,0.5) 0%, transparent 70%); }
 
-/* ------ Antennas ------ */
-.mascot-antennas {
+/* ------ Lincoln Top Hat ------ */
+.mascot-tophat {
   position: absolute;
-  top: -30px;
+  top: -62px;
   left: 50%;
   transform: translateX(-50%);
-  width: 120px;
-  display: flex;
-  justify-content: space-between;
-  z-index: 2;
-}
-
-.antenna {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0;
+  z-index: 3;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
 }
 
-.antenna::before {
-  content: '';
-  display: block;
-  width: 4px;
-  height: 22px;
-  background: rgba(255,255,255,0.6);
-  border-radius: 2px;
+.tophat-brim {
+  width: 120px;
+  height: 14px;
+  background: #1a1a1a;
+  border-radius: 6px 6px 0 0;
+  box-shadow: 0 3px 0 #000;
 }
 
-.antenna-ball {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  margin-top: -2px;
-  animation: antenna-glow 1.5s ease-in-out infinite alternate;
+.tophat-band {
+  width: 94px;
+  height: 10px;
+  background: #C41E3A; /* Lincoln red band */
+  position: relative;
 }
 
-.mascot--idle      .antenna-ball { background: #4FC3F7; }
-.mascot--listening .antenna-ball { background: #66BB6A; animation-duration: 0.4s; }
-.mascot--thinking  .antenna-ball { background: #FFA726; }
-.mascot--speaking  .antenna-ball { background: #AB47BC; animation-duration: 0.3s; }
+.tophat-band::after {
+  content: '★';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.7rem;
+  color: #FFD700;
+}
 
-@keyframes antenna-glow {
-  from { box-shadow: 0 0 4px currentColor;  transform: scale(1); }
-  to   { box-shadow: 0 0 14px currentColor; transform: scale(1.3); }
+.tophat-crown {
+  width: 94px;
+  height: 46px;
+  background: linear-gradient(180deg, #2a2a2a 0%, #111 100%);
+  border-radius: 4px 4px 0 0;
 }
 
 /* ------ Main face circle ------ */
@@ -176,10 +199,11 @@ body {
   overflow: hidden;
 }
 
-.mascot--idle      .mascot-face { background: linear-gradient(145deg, #4FC3F7, #0288D1); animation: bob 2.4s ease-in-out infinite; }
-.mascot--listening .mascot-face { background: linear-gradient(145deg, #81C784, #388E3C); animation: pulse-face 0.8s ease-in-out infinite; }
-.mascot--thinking  .mascot-face { background: linear-gradient(145deg, #FFB74D, #E65100); animation: wobble 0.5s ease-in-out infinite; }
-.mascot--speaking  .mascot-face { background: linear-gradient(145deg, #CE93D8, #7B1FA2); animation: bounce-speak 0.35s ease-in-out infinite alternate; }
+/* Lincoln red (idle), white/silver (listening), gold (thinking), deep red (speaking) */
+.mascot--idle      .mascot-face { background: linear-gradient(145deg, #E8424A, #C41E3A); animation: bob 2.4s ease-in-out infinite; }
+.mascot--listening .mascot-face { background: linear-gradient(145deg, #f5f5f5, #ddd); animation: pulse-face 0.8s ease-in-out infinite; }
+.mascot--thinking  .mascot-face { background: linear-gradient(145deg, #FFD700, #FFA000); animation: wobble 0.5s ease-in-out infinite; }
+.mascot--speaking  .mascot-face { background: linear-gradient(145deg, #C41E3A, #8B0000); animation: bounce-speak 0.35s ease-in-out infinite alternate; }
 
 @keyframes bob          { 0%,100% { transform: translateY(0); }  50% { transform: translateY(-12px); } }
 @keyframes pulse-face   { 0%,100% { transform: scale(1); }       50% { transform: scale(1.06); } }
@@ -320,7 +344,7 @@ body {
 
 .lring {
   position: absolute;
-  border: 3px solid rgba(102, 187, 106, 0.5);
+  border: 3px solid rgba(255, 255, 255, 0.55);
   border-radius: 50%;
   animation: ring-out 1.8s ease-out infinite;
 }
@@ -344,7 +368,7 @@ body {
 
 .sbar {
   width: 7px;
-  background: rgba(206, 147, 216, 0.8);
+  background: rgba(255, 220, 220, 0.85);
   border-radius: 4px;
   animation: bar-dance 0.5s ease-in-out infinite alternate;
 }
@@ -526,31 +550,31 @@ body {
 .voice-btn-icon { font-size: 2.6rem; line-height: 1; }
 
 .voice-btn--idle {
-  background: linear-gradient(135deg, #FF6B6B, #FF4757);
-  box-shadow: 0 8px 28px rgba(255,71,87,0.5);
+  background: linear-gradient(135deg, #E8424A, #C41E3A);
+  box-shadow: 0 8px 28px rgba(196,30,58,0.55);
   animation: mic-pulse 2s ease-in-out infinite;
 }
 
 .voice-btn--listening {
-  background: linear-gradient(135deg, #66BB6A, #2E7D32);
-  box-shadow: 0 0 0 0 rgba(102,187,106,0.6);
+  background: linear-gradient(135deg, #f0f0f0, #ccc);
+  box-shadow: 0 0 0 0 rgba(240,240,240,0.7);
   animation: mic-glow 0.9s ease-in-out infinite;
 }
 
 .voice-btn--thinking {
-  background: linear-gradient(135deg, #FFB74D, #E65100);
-  box-shadow: 0 8px 24px rgba(255,183,77,0.4);
+  background: linear-gradient(135deg, #FFD700, #FFA000);
+  box-shadow: 0 8px 24px rgba(255,215,0,0.45);
   animation: mic-spin 1.2s linear infinite;
 }
 
 .voice-btn--speaking {
-  background: linear-gradient(135deg, #CE93D8, #7B1FA2);
-  box-shadow: 0 8px 24px rgba(171,71,188,0.5);
+  background: linear-gradient(135deg, #C41E3A, #8B0000);
+  box-shadow: 0 8px 24px rgba(139,0,0,0.5);
   animation: mic-bounce 0.4s ease-in-out infinite alternate;
 }
 
-@keyframes mic-pulse  { 0%,100% { box-shadow: 0 8px 28px rgba(255,71,87,0.5),  0 0 0 0 rgba(255,71,87,0.4); } 50% { box-shadow: 0 8px 28px rgba(255,71,87,0.5), 0 0 0 14px rgba(255,71,87,0); } }
-@keyframes mic-glow   { 0%,100% { box-shadow: 0 0 0 0 rgba(102,187,106,0.7); } 50% { box-shadow: 0 0 0 18px rgba(102,187,106,0); } }
+@keyframes mic-pulse  { 0%,100% { box-shadow: 0 8px 28px rgba(196,30,58,0.55), 0 0 0 0 rgba(196,30,58,0.4); } 50% { box-shadow: 0 8px 28px rgba(196,30,58,0.55), 0 0 0 14px rgba(196,30,58,0); } }
+@keyframes mic-glow   { 0%,100% { box-shadow: 0 0 0 0 rgba(200,200,200,0.8); } 50% { box-shadow: 0 0 0 18px rgba(200,200,200,0); } }
 @keyframes mic-spin   { to { transform: rotate(360deg); } }
 @keyframes mic-bounce { from { transform: scale(1); } to { transform: scale(1.1); } }
 
@@ -608,7 +632,7 @@ body {
 .text-input:disabled { opacity: 0.5; cursor: not-allowed; }
 
 .send-btn {
-  background: linear-gradient(135deg, #4FC3F7, #0288D1);
+  background: linear-gradient(135deg, #E8424A, #C41E3A);
   border: none;
   border-radius: 18px;
   color: #fff;
